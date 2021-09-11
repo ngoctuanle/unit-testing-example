@@ -7,7 +7,7 @@ import { People } from '../../models/people';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'unit-testing-example-details',
+  selector: 'ngvn-details',
   templateUrl: './details.component.html',
   providers: [
     NzMessageService

@@ -41,7 +41,11 @@
     </div>
     <br />
     <div>
-      <button [disabled]='!fileToUpload' nz-button nzType="primary" (click)='onUploadIdCard()'>
+      <button
+        [disabled]='!fileToUpload'
+        nz-button nzType="primary"
+        ngvnDebounceClick (debounceClick)='onUploadIdCard()'
+      >
         Upload
       </button>
     </div>

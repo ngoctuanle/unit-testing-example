@@ -5,7 +5,7 @@ import { finalize, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'unit-testing-example-list',
+  selector: 'ngvn-list',
   templateUrl: './list.component.html',
 })
 export class ListComponent implements OnInit, OnDestroy {

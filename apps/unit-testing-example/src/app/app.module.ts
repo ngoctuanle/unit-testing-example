@@ -16,11 +16,12 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { DebounceClickDirective } from './directives/debounce-click.directive';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, ListComponent, DetailsComponent],
+  declarations: [AppComponent, ListComponent, DetailsComponent, DebounceClickDirective],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, NzTableModule, NzTabsModule, NzGridModule, NzButtonModule, NzIconModule],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
