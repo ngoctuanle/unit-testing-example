@@ -1,0 +1,37 @@
+<h1>People</h1>
+{{total}}
+<nz-table
+ #table
+ nzShowPagination
+ nzBordered
+ nzShowSizeChanger
+ nzHideOnSinglePage
+ nzSize="default"
+ [nzPageSizeOptions]="[10, 20, 50]"
+ [nzLoading]="status === 'loading'"
+ [nzPageIndex]="page"
+ [nzPageSize]="pageSize"
+ [nzTotal]="total"
+ [nzData]="peoples"
+ [nzShowTotal]="rangeTemplate"
+ [nzFrontPagination]="false"
+ (nzPageIndexChange)="onChangePage($event)"
+ (nzPageSizeChange)="onChangePageSize($event)"
+>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of table.data" [routerLink]="[row.id]">
+    <td>{{ row.id }}</td>
+    <td>{{ row.name }}</td>
+  </tr>
+  </tbody>
+</nz-table>
+
+<ng-template #rangeTemplate let-range="range" let-total>
+  Showing {{ range[0] }} to {{ range[1] }} of {{ total }}
+</ng-template>
