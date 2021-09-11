@@ -91,6 +91,18 @@
             "jestConfig": "apps/unit-testing-example/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "karma": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/unit-testing-example/src/test.ts",
+            "tsConfig": "apps/unit-testing-example/tsconfig.spec.json",
+            "karmaConfig": "apps/unit-testing-example/karma.conf.js",
+            "polyfills": "apps/unit-testing-example/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
         }
       }
     },
