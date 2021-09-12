@@ -1,24 +1,8 @@
-<h1>Details of {{ people.name }}</h1>
+<h1>Details of {{ people?.name }}</h1>
 
-<nz-tabset>
+<nz-tabset *ngIf="people">
   <nz-tab nzTitle='Info'>
-    <nz-form-item>
-      <nz-form-label [nzXs]="24" [nzSm]="4">
-        <strong>ID</strong>
-      </nz-form-label>
-      <nz-form-control [nzXs]="24" [nzSm]="20">
-        {{people.id}}
-      </nz-form-control>
-    </nz-form-item>
-
-    <nz-form-item>
-      <nz-form-label [nzXs]="24" [nzSm]="4">
-        <strong>Name</strong>
-      </nz-form-label>
-      <nz-form-control [nzXs]="24" [nzSm]="20">
-        {{people.name}}
-      </nz-form-control>
-    </nz-form-item>
+    <ngvn-people-info [people]='people'></ngvn-people-info>
   </nz-tab>
   <nz-tab nzTitle='ID Card'>
     <input

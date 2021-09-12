@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { PeopleService } from '../../services/people.service';
 import { ActivatedRoute } from '@angular/router';
-import { filter, finalize, map, pluck, switchMap, takeUntil } from 'rxjs/operators';
+import { filter, finalize, pluck, switchMap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { People } from '../../models/people';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -16,7 +16,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class DetailsComponent implements OnDestroy {
   private destroyed$ = new Subject();
   status: 'loading' | 'idle' = 'loading';
-  people!: People;
+  people?: People;
 
   fileToUpload: File | null = null;
 
@@ -29,8 +29,7 @@ export class DetailsComponent implements OnDestroy {
       .pipe(
         pluck('id'),
         filter(id => !!id),
-        map(id => Number(id)),
-        switchMap(id => this.peopleService.getPeopleById(id)),
+        switchMap(id => this.peopleService.getPeopleById(Number(id))),
         finalize(() => this.status = 'idle'),
         takeUntil(this.destroyed$)
       )
@@ -50,7 +49,8 @@ export class DetailsComponent implements OnDestroy {
   }
 
   onUploadIdCard(): void {
-    this.peopleService.uploadIdCardById(this.people.id, this.fileToUpload as File)
+    if (this.people) { 
+      this.peopleService.uploadIdCardById(this.people.id, this.fileToUpload as File)
       .pipe(takeUntil(this.destroyed$))
       .subscribe(({ result }) => {
         if (result === 'failure') {
@@ -59,5 +59,6 @@ export class DetailsComponent implements OnDestroy {
         }
         this.msg.success('Upload success');
       })
+    }
   }
 }

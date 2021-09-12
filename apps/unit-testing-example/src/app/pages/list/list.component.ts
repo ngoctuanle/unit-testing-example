@@ -29,7 +29,7 @@ export class ListComponent implements OnInit, OnDestroy {
     this.destroyed$.complete();
   }
 
-  loadPeople(): void {
+  private loadPeople(): void {
     this.status = 'loading';
     this.peopleService.getListPeople({page: this.page, pageSize: this.pageSize})
       .pipe(
