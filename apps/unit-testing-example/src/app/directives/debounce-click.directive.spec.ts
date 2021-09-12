@@ -1,4 +1,4 @@
-import { discardPeriodicTasks, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DebounceClickDirective } from './debounce-click.directive';
 
@@ -32,8 +32,8 @@ describe('DebounceClickDirective', () => {
   it('should not output click event', fakeAsync(() => {
     component.button.nativeElement.click();
     tick(100);
-    discardPeriodicTasks();
     expect(component.click).not.toHaveBeenCalled();
+    tick(500);
   }))
 
   it('should output click event', fakeAsync(() => {
